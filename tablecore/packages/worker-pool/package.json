@@ -1,0 +1,19 @@
+{
+  "name": "@tablecore/worker-pool",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "@tablecore/core": "*"
+  },
+  "devDependencies": {
+    "@tablecore/protocol": "*",
+    "@tablecore/transport-ws": "*",
+    "@tablecore/server": "*",
+    "@tablecore/game-grid-duel": "*"
+  }
+}

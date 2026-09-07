@@ -1,0 +1,1 @@
+export const previewProfile={"gameId": "last-sector", "name": "Last Sector", "phases": ["Сканирование", "Манёвр", "Контакт", "Сектор"], "stats": ["Топливо", "Кредиты", "Корпус", "Ход"], "roles": ["tv", "player"], "adapterVersion": 1};

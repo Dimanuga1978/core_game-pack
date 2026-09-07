@@ -1,0 +1,18 @@
+{
+  "name": "@tablecore/pack-linter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "@tablecore/authoring-sdk": "*",
+    "@tablecore/content-sdk": "*",
+    "@tablecore/game-pack": "*"
+  },
+  "devDependencies": {
+    "@tablecore/game-sector-expedition": "*"
+  }
+}

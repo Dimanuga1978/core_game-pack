@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TABLECORE — Игры</title>
+<link rel="stylesheet" href="/launcher/style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand"><span class="mark">TC</span><div><b>TABLECORE</b><small>GAME LIBRARY</small></div></div>
+      <div class="topbar-actions"><button id="refresh" class="icon-btn" aria-label="Обновить каталог" title="Обновить каталог">↻</button></div>
+    </header>
+    <main>
+      <section class="hero">
+        <div><span class="eyebrow">ИГРОВАЯ БИБЛИОТЕКА</span><h1>Выберите игру</h1><p>Каждый Game Pack — отдельная игра. Откройте превью или сразу переходите к игре.</p></div>
+        <div id="count" class="count"></div>
+      </section>
+      <section id="games" class="games" aria-live="polite"></section>
+      <section id="empty" class="empty" hidden><b>Игр пока нет</b><span>Добавьте Game Pack в каталог <code>games/</code> и обновите страницу.</span></section>
+    </main>
+  </div>
+<script type="module">
+const gamesEl=document.getElementById('games');
+const emptyEl=document.getElementById('empty');
+const countEl=document.getElementById('count');
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let adminApiUrl='';
+function card(g){
+  const cover=g.cover ? `/games/${encodeURIComponent(g.root)}/${g.cover.split('/').map(encodeURIComponent).join('/')}` : '';
+  const style=cover ? `style="--cover:url('${cover.replace(/'/g,"%27")}')"` : '';
+  // Real players never see this catalog page at all -- they always
+  // arrive via a specific join link (the shared lobby QR/link, or an
+  // individually-issued one), never by browsing this launcher's home
+  // page. In practice, the ONLY person who ever clicks a card here is
+  // the match ORGANIZER, running this on the same machine as the server
+  // (able to reach the loopback-only admin API at adminApiUrl). Given
+  // that, keeping "Играть" as a bare, useless-for-anyone navigation (it
+  // used to just show a "no active match" notice) and a SEPARATE
+  // "Создать матч" button next to it was needless complexity solving a
+  // non-problem -- "Играть" now goes straight to creating a lobby for
+  // this game, which is the only thing anyone clicking it here actually
+  // wants.
+  const playHref = (g.hasPlay && adminApiUrl) ? `${adminApiUrl}/?game=${encodeURIComponent(g.id)}` : `/play/${encodeURIComponent(g.id)}`;
+  return `<article class="game-card" ${style}>
+    <div class="cover"><div class="cover-sheen"></div><div class="cover-fallback">${esc((g.name||g.id).slice(0,1))}</div></div>
+    <div class="card-body"><div class="card-meta"><span>${esc(g.status)}</span><span>${esc(g.version)}</span></div><h2>${esc(g.name)}</h2><p>${esc(g.description || 'Game Pack')}</p>
+      <div class="actions">${g.hasPlay?`<a class="btn primary" href="${playHref}">Играть</a>`:''}${g.hasPreview?`<a class="btn" href="/preview/${encodeURIComponent(g.id)}">Превью</a>`:''}</div>
+    </div>
+  </article>`;
+}
+async function load(){
+  gamesEl.innerHTML='<div class="loading">Загрузка каталога…</div>';
+  try{const r=await fetch('/api/games',{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);const data=await r.json();const games=data.games||[];adminApiUrl=data.adminApiUrl||'';countEl.textContent=`${games.length} ${games.length===1?'игра':'игры'}`;gamesEl.innerHTML=games.map(card).join('');emptyEl.hidden=games.length!==0;}catch(e){gamesEl.innerHTML='<div class="error">Не удалось загрузить каталог игр.</div>';countEl.textContent='';emptyEl.hidden=true;console.error(e);}
+}
+document.getElementById('refresh').onclick=load; load();
+</script>
+</body>
+</html>

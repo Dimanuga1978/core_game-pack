@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TableCore Hex Map Editor</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <div><span class="eyebrow">TABLECORE V2 · B19</span><h1>Hex Map Editor</h1><p>Authoring-only map editing with axial coordinates.</p></div>
+    <div class="top-actions"><button id="fillBtn">Fill terrain</button><button id="exportBtn">Export Map JSON</button></div>
+  </header>
+  <main>
+    <aside class="panel palette">
+      <h2>Terrain</h2><div id="terrainPalette"></div>
+      <h2>Object</h2><div id="objectPalette"></div>
+      <button id="eraseBtn" class="ghost">Erase object</button>
+      <div class="help">Click a hex to paint. Right-click selects without painting.</div>
+    </aside>
+    <section class="canvas-panel">
+      <svg id="map" viewBox="-360 -260 720 520" role="img" aria-label="Hex map editor"></svg>
+    </section>
+    <aside class="panel inspector">
+      <span class="eyebrow">INSPECTOR</span>
+      <h2 id="selectedTitle">Nothing selected</h2>
+      <dl id="selectedData"></dl>
+      <pre id="status">Ready.</pre>
+    </aside>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

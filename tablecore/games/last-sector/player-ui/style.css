@@ -1,0 +1,205 @@
+/* Design tokens (--ls-* custom properties) come from
+   ../client/design-system.css, linked directly in this page's <head> --
+   see that file's own module doc comment for why. A stray `@import
+   url("../../../design-system/index.css")` used to sit here too,
+   pointing at a path that never existed anywhere in the repository;
+   real people testing this game saw it as a `index.css 404` in their
+   browser console. Removed -- the working design-system.css is already
+   loaded via the HTML <link>, this @import was pure leftover dead
+   weight from before that fix, not something anything here still needs.
+*/
+
+:root {
+  --ls-player-map-min: 70dvh;
+  --ls-player-max: 1800px;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: var(--ls-color-text);
+  background:
+    radial-gradient(circle at 50% -10%, rgba(24, 70, 94, .36), transparent 46%),
+    var(--ls-color-bg-0);
+  font-family: var(--ls-font-ui);
+  overflow-x: hidden;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255,255,255,.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.01) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.42), transparent 84%);
+}
+
+.app-shell {
+  width: min(100%, var(--ls-player-max));
+  margin: 0 auto;
+  padding: max(10px, var(--ls-safe-top)) max(12px, var(--ls-safe-right)) 20px max(12px, var(--ls-safe-left));
+}
+
+.topbar {
+  min-height: 58px;
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto minmax(0,1fr);
+  align-items: center;
+  gap: var(--ls-space-4);
+  padding: 8px 12px;
+  border: 1px solid rgba(53,91,115,.42);
+  border-radius: var(--ls-radius-xl);
+  background: rgba(6, 15, 24, .9);
+  box-shadow: var(--ls-shadow-panel);
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: max(8px, var(--ls-safe-top));
+  z-index: 20;
+}
+.brand-lockup { display:flex; align-items:center; gap:10px; min-width:0; }
+.brand-mark {
+  width: 36px; height: 36px; flex:none; display:grid; place-items:center;
+  border-radius: 10px; color:#021316; font-weight: 950; letter-spacing:.1em;
+  background: linear-gradient(135deg, var(--ls-color-player), #9ff7e8);
+  box-shadow: var(--ls-glow-player);
+}
+.brand-lockup strong { display:block; font-size:12px; letter-spacing:.18em; }
+.brand-lockup span { display:block; margin-top:2px; color:var(--ls-color-text-dim); font-size:8px; letter-spacing:.18em; }
+.topbar-center { text-align:center; }
+.eyebrow,.section-kicker { color:var(--ls-color-text-dim); font-size:9px; font-weight:800; letter-spacing:.2em; text-transform:uppercase; }
+.topbar-center b { display:block; margin-top:2px; font-size:12px; }
+.topbar-right { display:flex; justify-content:flex-end; align-items:center; gap:8px; min-width:0; }
+.status-bad,.status-ok {
+  display:inline-flex; align-items:center; min-height:28px; padding:0 9px;
+  border-radius:var(--ls-radius-pill); border:1px solid var(--ls-color-border);
+  background:rgba(8,19,30,.78); color:var(--ls-color-text-muted);
+  font-size:8px; font-weight:900; letter-spacing:.14em;
+}
+.status-ok { color:var(--ls-color-success); border-color:rgba(73,224,162,.3); background:var(--ls-color-success-bg); }
+.player-chip { display:inline-flex; align-items:center; gap:7px; min-height:30px; padding:0 10px; border:1px solid var(--ls-color-border); border-radius:var(--ls-radius-md); background:rgba(8,19,30,.8); font-size:10px; }
+.player-chip i { width:7px; height:7px; border-radius:50%; background:var(--ls-color-player); box-shadow:0 0 10px var(--ls-color-player); }
+
+.layout { display:grid; grid-template-columns:minmax(0,1fr) 350px; gap:var(--ls-space-3); margin-top:var(--ls-space-3); align-items:start; }
+.panel { border:1px solid rgba(53,91,115,.42); border-radius:var(--ls-radius-lg); background:linear-gradient(180deg,var(--ls-color-surface-2),var(--ls-color-surface-1)); box-shadow:var(--ls-shadow-panel); overflow:hidden; }
+.map-panel { min-width:0; }
+.panel-head { min-height:56px; padding:0 var(--ls-space-5); display:flex; justify-content:space-between; align-items:center; gap:var(--ls-space-4); border-bottom:1px solid rgba(53,91,115,.28); }
+.map-head h1 { margin:4px 0 0; font-size:var(--ls-text-xl); line-height:var(--ls-leading-tight); }
+.map-status { display:flex; align-items:center; gap:7px; color:var(--ls-color-text-muted); font-size:8px; font-weight:900; letter-spacing:.16em; }
+.pulse { width:7px; height:7px; border-radius:50%; background:var(--ls-color-success); box-shadow:0 0 12px var(--ls-color-success); }
+.legend { display:flex; gap:14px; flex-wrap:wrap; padding:9px var(--ls-space-5); border-bottom:1px solid rgba(53,91,115,.22); color:var(--ls-color-text-muted); font-size:9px; }
+.legend>span { display:inline-flex; align-items:center; gap:6px; }
+.legend-dot { width:7px; height:7px; border-radius:50%; }
+.own-dot { background:var(--ls-color-player-strong); box-shadow:0 0 8px var(--ls-color-player); }
+.other-dot { background:var(--ls-color-info); box-shadow:0 0 8px var(--ls-color-info); }
+.legend-line { width:14px; height:1px; background:var(--ls-color-border-strong); }
+
+.map-frame { position:relative; min-height:var(--ls-player-map-min); padding:18px; background:radial-gradient(circle at 48% 38%,rgba(37,120,154,.16),transparent 38%), var(--ls-color-bg-1); }
+.map-frame::after { content:""; position:absolute; inset:18px; border:1px solid rgba(53,91,115,.24); border-radius:12px; pointer-events:none; }
+/* Real hex-grid board (SVG polygons that actually tile edge-to-edge --
+   see games/last-sector/client/hex-geometry.mjs's own doc comment) --
+   replaces what used to be a plain rectangular CSS grid of divs with a
+   gap between them, which is why hexes never visually connected to each
+   other. `#grid` now just hosts the <svg> hex-board.mjs builds. */
+#grid { position:relative; display:flex; min-height:620px; z-index:1; }
+.ls-hex-board { width:100%; height:100%; min-height:inherit; }
+.hex { fill:#0b1322; stroke:#263957; stroke-width:1; cursor:pointer; transition:fill var(--ls-motion-fast) var(--ls-ease-standard), stroke var(--ls-motion-fast) var(--ls-ease-standard); }
+g[data-coord][data-kind="hidden"] .hex { opacity:.3; fill-opacity:.35; }
+g[data-coord].reachable .hex { stroke:var(--ls-color-success); stroke-width:2.4; }
+g[data-coord].collapsed .hex { fill:#050a12; stroke:#1a2433; opacity:.55; }
+g[data-coord][data-kind="planet"] .hex { fill:#0c2a34; stroke:#2c7f96; }
+g[data-coord][data-kind="station"] .hex,
+g[data-coord][data-kind="base"] .hex { fill:#0a2019; stroke:#2a806c; }
+g[data-coord][data-kind="pirate"] .hex { fill:#26090f; stroke:#8a3441; }
+g[data-coord][data-kind="nebula"] .hex { fill:#140d20; stroke:#654f9c; }
+g[data-coord][data-kind="asteroid"] .hex { fill:#0c1017; stroke:#3a4149; }
+g[data-coord][data-kind="blackhole"] .hex { fill:#0a0616; stroke:#6a3fa8; }
+g[data-coord][data-kind="teleport"] .hex,
+g[data-coord][data-kind="accelerator"] .hex { fill:#0a1c2c; stroke:#2f6fa8; }
+g[data-coord][data-kind="signal"] .hex { fill:#0c1a26; stroke:#25a0c0; }
+g[data-coord][data-kind="anomaly"] .hex { fill:#160c26; stroke:#8b5cd8; }
+.tile-icon { color:var(--ls-color-neutral); pointer-events:none; }
+.tile-icon .ls-asset { width:38px; height:38px; overflow:visible; transform:translate(-19px,-19px); opacity:.85; }
+.tile-loot { pointer-events:none; stroke:#050a12; stroke-width:1; filter:drop-shadow(0 0 4px currentColor); animation:ls-loot-pulse 2.2s ease-in-out infinite; }
+@keyframes ls-loot-pulse { 0%,100% { opacity:.75; } 50% { opacity:1; } }
+@media (prefers-reduced-motion: reduce) { .tile-loot { animation:none; } }
+g[data-coord][data-kind="planet"] .tile-icon { color:#63d8f2; }
+g[data-coord][data-kind="station"] .tile-icon,
+g[data-coord][data-kind="base"] .tile-icon { color:var(--ls-color-ally); }
+g[data-coord][data-kind="asteroid"] .tile-icon { color:#a3b1ba; }
+g[data-coord][data-kind="pirate"] .tile-icon { color:var(--ls-color-enemy); }
+g[data-coord][data-kind="nebula"] .tile-icon,
+g[data-coord][data-kind="anomaly"] .tile-icon { color:var(--ls-color-anomaly); }
+g[data-coord][data-kind="signal"] .tile-icon { color:var(--ls-color-player-strong); }
+g[data-coord][data-kind="accelerator"] .tile-icon,
+g[data-coord][data-kind="teleport"] .tile-icon { color:var(--ls-color-info); }
+g[data-coord][data-kind="blackhole"] .tile-icon { color:#c19bff; }
+#ls-ships { pointer-events:none; }
+.ship-mark { pointer-events:none; }
+.ship-mark .ls-asset { width:30px; height:30px; overflow:visible; transform:translate(-15px,-15px); filter:drop-shadow(0 0 8px color-mix(in srgb, currentColor 45%, transparent)); }
+/* .own/.other classes are still set (see main.js's createShipIcon) for
+   any other CSS/JS that wants a quick "is this my ship" check, but the
+   actual per-player COLOR is now set as a real inline style directly on
+   each ship (see hex-board.mjs's own colorForOwner()) -- a fixed
+   binary own/other color pair here would be dead code AND misleading
+   (inline styles always win over these class rules regardless), since
+   3-4 player matches need to show each opponent in their OWN distinct
+   color, not one shared "other" color for everyone who isn't you. */
+.ship-mark[data-ship="warship"] .ls-asset { transform:translate(-15px,-15px) scale(1.05); }
+.ship-mark[data-ship="tanker"] .ls-asset { transform:translate(-15px,-15px) scale(.92); }
+.ship-mark[data-ship="scout"] .ls-asset { transform:translate(-15px,-15px) scale(.86); }
+.map-corner { position:absolute; z-index:3; font-family:var(--ls-font-mono); color:var(--ls-color-text-dim); font-size:7px; letter-spacing:.14em; }
+.map-corner.top-left { left:28px; top:24px; }.map-corner.top-right{right:28px;top:24px}.map-corner.bottom-left{left:28px;bottom:24px}.map-corner.bottom-right{right:28px;bottom:24px}
+
+.side-stack { display:grid; gap:var(--ls-space-3); }
+.ship-card,.actions-panel,.intel-panel { padding:var(--ls-space-4); }
+.ship-hero { display:flex; gap:10px; align-items:center; margin:10px 0 14px; }
+.ship-emblem { width:44px; height:44px; display:grid; place-items:center; border-radius:12px; border:1px solid rgba(37,214,255,.35); background:rgba(37,214,255,.08); color:var(--ls-color-player-strong); box-shadow:var(--ls-glow-player); }
+.ship-title strong { display:block; font-size:13px; letter-spacing:.12em; }.ship-title span{display:block;margin-top:3px;color:var(--ls-color-text-muted);font-size:10px}
+.meter-list { display:grid; gap:11px; }
+.meter-row > div:first-child { display:flex; justify-content:space-between; gap:10px; margin-bottom:5px; }.meter-row label{font-size:8px;letter-spacing:.16em;color:var(--ls-color-text-dim)}.meter-row b{font-size:9px}
+.meter { height:6px; border-radius:var(--ls-radius-pill); overflow:hidden; background:#152636; }.meter i{display:block;height:100%;border-radius:inherit;background:var(--ls-color-player);box-shadow:0 0 10px rgba(37,214,255,.3)}
+.resource-strip{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}.resource-strip span{display:grid;gap:2px;padding:8px;border:1px solid rgba(53,91,115,.25);border-radius:9px;background:rgba(4,12,20,.6)}.resource-strip small{font-size:7px;letter-spacing:.14em;color:var(--ls-color-text-dim)}.resource-strip b{font-size:13px}
+.action-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.action-button{min-height:44px;width:100%;display:flex;align-items:center;justify-content:center;gap:8px}.action-button svg{width:20px;height:20px}.action-button .action-label{white-space:nowrap}.action-button[data-action="MOVE"]{--action:var(--ls-color-player)}.action-button[data-action="ATTACK"],.action-button[data-action="ATTACK_TANKER"]{--action:var(--ls-color-enemy)}.action-button[data-action="SCAN"]{--action:var(--ls-color-anomaly)}.action-button[data-action="COLLECT"],.action-button[data-action="BUY_TRAP"],.action-button[data-action="END_TURN"]{--action:var(--ls-color-warning)}.action-button[data-action="TELEPORT"],.action-button[data-action="BUY_FUEL"]{--action:var(--ls-color-info)}.action-button[data-action="REPAIR"]{--action:var(--ls-color-success)}.action-button[data-action]{border-color:color-mix(in srgb,var(--action) 45%,var(--ls-color-border));color:color-mix(in srgb,var(--action) 82%,#fff)}
+.event-list{display:grid;gap:7px;max-height:260px;overflow:auto}.event{padding:9px 10px;border-left:2px solid var(--ls-color-border-strong);border-radius:7px;background:#06111a;color:var(--ls-color-text-muted);font-size:9px;line-height:1.45}.event:first-child{color:var(--ls-color-text);border-left-color:var(--ls-color-player)}
+
+.mobile-hud{display:none}
+@media(max-width:1050px){.layout{grid-template-columns:1fr}.side-stack{grid-template-columns:1fr 1fr}.intel-panel{grid-column:1/-1}.map-frame{min-height:620px}}
+@media(max-width:700px){
+  .app-shell{padding-top:calc(4px + var(--ls-safe-top));padding-bottom:calc(76px + var(--ls-safe-bottom));}
+  .topbar{position:fixed;left:var(--ls-safe-left);right:var(--ls-safe-right);top:var(--ls-safe-top);grid-template-columns:auto 1fr auto;min-height:46px;padding:4px 6px;gap:6px;border-radius:var(--ls-radius-lg);z-index:100;}
+  .brand-lockup{display:none}.topbar-center{display:block;text-align:left;min-width:0}.topbar-center .eyebrow{display:none}.topbar-center b{font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.topbar-right{gap:5px}.topbar-right .status-bad,.topbar-right .status-ok{display:none}.player-chip{min-height:34px;padding:0 8px;font-size:9px}
+  .layout{display:block;margin-top:52px}.map-panel{border-radius:var(--ls-radius-lg);}.panel-head,.legend{display:none}.map-frame{min-height:calc(100dvh - 118px);padding:8px;background:radial-gradient(circle at 50% 42%,rgba(37,120,154,.16),transparent 42%),var(--ls-color-bg-1)}.map-frame::after{inset:8px;border-radius:10px}#grid{min-height:calc(100dvh - 134px);padding:12px 4px}
+  .map-corner{display:none}.side-stack{display:none}
+  .mobile-hud{display:block;position:fixed;inset:0;pointer-events:none;z-index:90}.mobile-strip{position:absolute;left:calc(6px + var(--ls-safe-left));right:calc(6px + var(--ls-safe-right));top:calc(56px + var(--ls-safe-top));display:flex;align-items:center;gap:5px;pointer-events:auto}.mobile-stat{min-width:48px;min-height:32px;display:grid;place-items:center;padding:4px 6px;border:1px solid rgba(53,91,115,.46);border-radius:9px;background:rgba(5,14,23,.85);backdrop-filter:blur(10px)}.mobile-stat span{font-size:6px;color:var(--ls-color-text-dim);letter-spacing:.12em}.mobile-stat b{font-size:10px}.mobile-stat:nth-of-type(4){margin-left:auto}.mobile-strip .ls-icon-button{min-width:36px;min-height:36px;width:36px}
+  .mobile-actions{position:absolute;left:calc(6px + var(--ls-safe-left));right:calc(6px + var(--ls-safe-right));bottom:calc(6px + var(--ls-safe-bottom));display:flex;gap:6px;overflow-x:auto;padding:5px;border:1px solid rgba(53,91,115,.48);border-radius:var(--ls-radius-lg);background:rgba(4,12,20,.94);backdrop-filter:blur(14px);box-shadow:var(--ls-shadow-float);pointer-events:auto;scrollbar-width:none}.mobile-actions::-webkit-scrollbar{display:none}.mobile-actions .action-button{min-width:48px;width:48px;min-height:48px;padding:0;border-radius:11px}.mobile-actions .action-label{display:none}.mobile-actions .action-button svg{width:22px;height:22px}
+  .mobile-sheet{position:absolute;left:calc(6px + var(--ls-safe-left));right:calc(6px + var(--ls-safe-right));bottom:calc(66px + var(--ls-safe-bottom));max-height:42dvh;overflow:auto;padding:14px;border:1px solid rgba(53,91,115,.55);border-radius:var(--ls-radius-xl);background:rgba(5,12,19,.97);box-shadow:var(--ls-shadow-float);pointer-events:auto}.mobile-sheet[hidden]{display:none}.sheet-title{font-size:9px;letter-spacing:.18em;color:var(--ls-color-text-dim)}.sheet-value{margin-top:3px;font-size:17px}.sheet-row{display:flex;justify-content:space-between;border-top:1px solid rgba(65,102,122,.26);padding-top:8px;margin-top:8px;font-size:11px}.sheet-row span{color:var(--ls-color-text-muted)}
+}
+
+/* (Old div-based `.cell`/`.unit` asset-layer rules removed -- replaced
+   by the SVG-native `.tile-icon`/`.ship-mark` rules above, right where
+   the rest of the hex-board styling lives, not duplicated down here.) */
+
+/* Shown when the page loads without a real match/token -- see main.js's
+   own comment for why this exists (real people testing this game hit an
+   empty board with no console error and no explanation at all). */
+#no-match-notice { position:absolute; inset:18px; z-index:5; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; text-align:center; padding:32px; background:rgba(6,9,15,.92); border:1px solid var(--ls-color-border-strong); border-radius:var(--ls-radius-lg); }
+#no-match-notice strong { font-size:var(--ls-text-xl); color:var(--ls-color-warning); letter-spacing:.04em; }
+#no-match-notice p { max-width:520px; color:var(--ls-color-text-dim); line-height:1.5; margin:0; }
+#no-match-notice code { background:var(--ls-color-surface-2); padding:1px 6px; border-radius:4px; color:var(--ls-color-player-strong); font-family:var(--ls-font-mono); }
+
+/* Ambient background scene animations (see client/ambient-scene.mjs's
+   own module doc comment for the full design/approval history). */
+.ambient-star-twinkle{animation:ls-ambient-twinkle 4.5s ease-in-out infinite}
+@keyframes ls-ambient-twinkle{0%,100%{opacity:.35}50%{opacity:1}}
+.ambient-shooting-star-motion{animation:ls-ambient-shooting-star 9s ease-in infinite}
+@keyframes ls-ambient-shooting-star{
+  0%,72%{opacity:0;transform:translate(0,0)}
+  73%{opacity:1;transform:translate(0,0)}
+  85%{opacity:1;transform:translate(160px,88px)}
+  86%,100%{opacity:0;transform:translate(160px,88px)}
+}
+@media (prefers-reduced-motion: reduce){.ambient-star-twinkle,.ambient-shooting-star-motion{animation:none}}

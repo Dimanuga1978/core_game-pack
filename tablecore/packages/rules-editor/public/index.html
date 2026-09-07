@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TableCore Rules Editor</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <div><span class="eyebrow">TABLECORE V2 · B20</span><h1>Rules Editor</h1><p>Edit parameters and declarative rules. Rules are data; simulation executes them.</p></div>
+    <div class="actions"><button id="newRuleBtn">New rule</button><button id="validateBtn">Validate</button><button id="exportBtn">Export JSON</button></div>
+  </header>
+  <main>
+    <aside class="panel rule-list"><div class="list-head"><h2>Rules</h2><span id="ruleCount"></span></div><div id="rules"></div></aside>
+    <section class="panel editor">
+      <div class="editor-head"><div><span class="eyebrow">RULE</span><h2 id="ruleTitle">Nothing selected</h2></div><button id="deleteBtn" class="danger">Delete</button></div>
+      <div id="form"></div>
+      <details open><summary>Declarative preview</summary><pre id="preview"></pre></details>
+    </section>
+    <aside class="panel diagnostics"><span class="eyebrow">VALIDATION</span><h2 id="status">Ready</h2><pre id="diagnostics"></pre><div class="help">The editor never executes rule nodes. The Game Pack simulation remains authoritative.</div></aside>
+  </main>
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

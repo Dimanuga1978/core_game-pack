@@ -1,0 +1,17 @@
+{
+  "name": "@tablecore/protocol",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "@tablecore/core": "*"
+  },
+  "devDependencies": {
+    "@tablecore/game-grid-duel": "*",
+    "@tablecore/server": "*"
+  }
+}

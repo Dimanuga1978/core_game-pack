@@ -1,0 +1,54 @@
+{
+  "id": "demo-party",
+  "version": 1,
+  "victoryScore": 1500,
+  "victoryMode": "score",
+  "playerSpawns": {
+    "p1": {
+      "coord": "0,0",
+      "shipType": "warship"
+    },
+    "p2": {
+      "coord": "2,0",
+      "shipType": "scout",
+      "overrides": {
+        "hp": 2,
+        "maxHp": 2,
+        "shield": 1,
+        "moves": 2,
+        "movePoints": 2,
+        "coord": "1,1"
+      }
+    }
+  },
+  "boardLayout": {
+    "cells": {
+      "1,0": {
+        "kind": "planet",
+        "loot": {
+          "type": "mineral",
+          "value": 1500,
+          "slots": 1
+        },
+        "lootVisibility": "public-after-discovery"
+      },
+      "2,1": {
+        "kind": "station"
+      },
+      "3,0": {
+        "kind": "asteroid"
+      },
+      "3,1": {
+        "kind": "teleport",
+        "to": "5,5",
+        "revealedGlobally": true
+      },
+      "4,1": {
+        "kind": "signal"
+      },
+      "5,5": {
+        "kind": "station"
+      }
+    }
+  }
+}

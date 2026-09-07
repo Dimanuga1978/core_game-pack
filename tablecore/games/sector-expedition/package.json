@@ -1,0 +1,21 @@
+{
+  "name": "@tablecore/game-sector-expedition",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./authoring": "./authoring/index.js"
+  },
+  "dependencies": {
+    "@tablecore/authoring-sdk": "*",
+    "@tablecore/content-sdk": "*",
+    "@tablecore/core": "*"
+  },
+  "devDependencies": {
+    "@tablecore/game-pack": "*",
+    "@tablecore/protocol": "*",
+    "@tablecore/server": "*"
+  }
+}

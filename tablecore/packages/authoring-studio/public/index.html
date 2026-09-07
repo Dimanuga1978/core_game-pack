@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><link rel="icon" href="data:,">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TableCore Authoring Studio</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">TABLECORE V2</div>
+      <h1>Authoring Studio</h1>
+      <p>Data-first editor for Game Pack content.</p>
+    </div>
+    <div class="actions">
+      <button id="validateBtn" class="primary">Validate</button>
+      <button id="exportBtn">Export JSON</button>
+      <label class="file-button">Import JSON<input id="importInput" type="file" accept="application/json"></label>
+    </div>
+  </header>
+  <main class="workspace">
+    <aside class="sidebar">
+      <h2>Content</h2>
+      <nav id="groupNav"></nav>
+      <div class="sidebar-note">The editor changes data only. Game rules execute in the runtime.</div>
+    </aside>
+    <section class="list-panel">
+      <div class="panel-header"><div><span class="eyebrow">COLLECTION</span><h2 id="groupTitle">Objects</h2></div><button id="newBtn">+ New</button></div>
+      <div id="entityList" class="entity-list"></div>
+    </section>
+    <section class="inspector">
+      <div class="panel-header"><div><span class="eyebrow">INSPECTOR</span><h2 id="inspectorTitle">Nothing selected</h2></div><button id="deleteBtn" class="danger" disabled>Delete</button></div>
+      <div id="editorForm" class="editor-form"></div>
+      <div class="diagnostics"><div class="diagnostics-head"><h3>Validation</h3><span id="statusBadge" class="badge neutral">Not checked</span></div><pre id="diagnosticsOutput">Press Validate to run the Authoring SDK validator.</pre></div>
+    </section>
+  </main>
+  <script src="./main.js"></script>
+</body>
+</html>

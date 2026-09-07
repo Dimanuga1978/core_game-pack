@@ -1,0 +1,336 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <defs>
+    <linearGradient id="shipFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="currentColor" stop-opacity="1"/>
+      <stop offset="1" stop-color="currentColor" stop-opacity=".38"/>
+    </linearGradient>
+  </defs>
+
+  <symbol id="ship-scout" viewBox="0 0 64 64">
+    <path d="M7 36 22 27l9-18 6 18 20 9-20 4-6 15-9-15Z" fill="url(#shipFill)" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M25 30h12M18 38h28" stroke="#04131a" stroke-width="2" stroke-linecap="round" opacity=".5"/>
+  </symbol>
+  <symbol id="ship-transport" viewBox="0 0 64 64">
+    <path d="M6 38 18 24h27l13 14-8 8H14Z" fill="url(#shipFill)" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M20 24V18h18v6M16 44h11M38 44h11" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ship-warship" viewBox="0 0 64 64">
+    <path d="M5 40 16 25h33l10 15-9 10H14Z" fill="url(#shipFill)" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M18 25 25 16h13l8 9M20 42h24M27 32h10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="ship-tanker" viewBox="0 0 64 64">
+    <path d="M8 39 16 26h33l8 13-7 8H15Z" fill="url(#shipFill)" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+    <path d="M22 26v-7h20v7M26 33h14M20 44h24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+  </symbol>
+
+  <!-- Detailed ship symbols below: ported from the pre-engine game's
+       own standalone assets/svg/ships/*.svg files (real, hand-crafted
+       art with gradients, glow filters, and an animated engine
+       exhaust), replacing the simpler geometric ship-* symbols above
+       for actual in-game use (those stay defined, for anything still
+       referencing the old shipFill-gradient names). Each source file
+       used to be its own separate svg document, free to reuse short
+       local ids like id="g" (its glow filter) or id="h" (its hull
+       gradient) and CSS class names like .ink/.detail/.engine2 without
+       any risk of collision, but SVG ids and style class/keyframe
+       names are not scoped to their containing symbol the way, say, a
+       React component's CSS module would be; they are document wide,
+       exactly like ordinary HTML. Copying all four ships into this one
+       shared sprite sheet unprefixed would have made every ship's .ink
+       rule (etc.) silently apply to every other ship too, and every
+       ship's filter="url(#g)" would resolve to whichever ship's #g
+       definition happened to appear last in the document, a real,
+       serious visual corruption risk, not a hypothetical one. Every
+       local id, CSS class, and keyframes name below is therefore
+       prefixed per ship (sc- for scout, tr- for transport, wa- for
+       warship, tk- for tanker), both in the markup's own class/href
+       attributes and inside each style block, so all four can
+       coexist safely in one document. Path/shape data itself is
+       unchanged from the original source. -->
+  <symbol id="ship-scout-detailed" viewBox="-80 -110 160 220">
+    <defs>
+      <filter id="sc-g"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <linearGradient id="sc-h" x1="0" y1="-1" x2="0" y2="1"><stop stop-color="#dffbff"/><stop offset=".22" stop-color="#8ca9bc"/><stop offset=".62" stop-color="#243746"/><stop offset="1" stop-color="#0c1720"/></linearGradient>
+      <style><![CDATA[
+        .sc-ink{fill:#0a1118;stroke:#dfeff4;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+        .sc-detail{fill:none;stroke:#88a8b6;stroke-width:2;stroke-linecap:round}
+        .sc-blue{fill:none;stroke:#63e6ff;stroke-width:3;stroke-linecap:round}
+        .sc-engine{fill:#bdfcff;stroke:#63e6ff;stroke-width:2;filter:url(#sc-g)}
+        .sc-engine2{fill:#1574a5;stroke:#63e6ff;stroke-width:2;filter:url(#sc-g);animation:sc-engine-pulse .16s ease-in-out infinite alternate}
+        @keyframes sc-engine-pulse{from{opacity:.45;transform:scaleY(.75)}to{opacity:1;transform:scaleY(1.35)}}
+        @media (prefers-reduced-motion: reduce){*{animation:none!important}}
+      ]]></style>
+    </defs>
+    <g>
+      <g><path class="sc-engine2" d="M-34 54L-15 110L0 63L15 110L34 54Z"/><path class="sc-engine" d="M-12 48L0 88L12 48Z"/></g>
+      <g>
+        <path class="sc-ink" fill="url(#sc-h)" d="M0-94 C-17-82-34-48-42-12L-34 43L0 58L34 43L42-12C34-48 17-82 0-94Z"/>
+        <path class="sc-detail" d="M0-80V34M-20-48C-8-38 8-38 20-48M-30 0H30M-25 22C-12 13 12 13 25 22"/>
+        <path class="sc-blue" d="M-30-17C-18-31-7-38 0-39C7-38 18-31 30-17"/>
+        <path class="sc-ink" fill="#172c3a" d="M-13-72C-7-81 7-81 13-72L10-49H-10Z"/>
+        <ellipse cx="0" cy="-62" rx="7" ry="10" fill="#63e6ff" opacity=".85" filter="url(#sc-g)"/>
+        <path class="sc-ink" fill="#15232e" d="M-33-2L-58 18L-40 23L-25 11ZM33-2L58 18L40 23L25 11Z"/>
+      </g>
+      <g><circle cx="-28" cy="31" r="3" fill="#63e6ff"/><circle cx="28" cy="31" r="3" fill="#63e6ff"/></g>
+    </g>
+  </symbol>
+  <symbol id="ship-transport-detailed" viewBox="-100 -105 200 210">
+    <defs>
+      <filter id="tr-g"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <linearGradient id="tr-h" x1="0" y1="-1" x2="0" y2="1"><stop stop-color="#edf7f2"/><stop offset=".25" stop-color="#95a89f"/><stop offset=".62" stop-color="#31463e"/><stop offset="1" stop-color="#111c19"/></linearGradient>
+      <style><![CDATA[
+        .tr-ink{fill:#0b1314;stroke:#dce7e3;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+        .tr-detail{fill:none;stroke:#8da7a1;stroke-width:2;stroke-linecap:round}
+        .tr-green{fill:none;stroke:#8cffc9;stroke-width:3;stroke-linecap:round}
+        .tr-engine2{fill:#50f0b5;stroke:#d2ffe8;stroke-width:2;filter:url(#tr-g);animation:tr-engine-pulse .22s ease-in-out infinite alternate}
+        @keyframes tr-engine-pulse{from{opacity:.35;transform:scaleY(.72)}to{opacity:1;transform:scaleY(1.3)}}
+        @media (prefers-reduced-motion: reduce){*{animation:none!important}}
+      ]]></style>
+    </defs>
+    <g>
+      <g><path class="tr-engine2" d="M-46 45L-23 106L-5 58L0 72L5 58L23 106L46 45Z"/></g>
+      <g>
+        <path class="tr-ink" fill="url(#tr-h)" d="M0-84C-29-80-62-55-78-18L-70 36L-38 59H38L70 36L78-18C62-55 29-80 0-84Z"/>
+        <path class="tr-ink" fill="#243a34" d="M-31-58H31L43-4L34 26H-34L-43-4Z"/>
+        <path class="tr-detail" d="M-58-18H58M-47 8H47M0-72V48M-24 47L-32 69H-14L0 48L14 69H32L24 47"/>
+        <path class="tr-green" d="M-42-35C-21-48 21-48 42-35M-53 28C-30 37 30 37 53 28"/>
+        <rect x="-18" y="-37" width="36" height="24" rx="7" fill="#91fff1" opacity=".32" stroke="#bffff2" stroke-width="2" filter="url(#tr-g)"/>
+        <circle cx="-44" cy="3" r="4" fill="#8cffc9"/><circle cx="44" cy="3" r="4" fill="#8cffc9"/>
+        <path class="tr-ink" fill="#1b2b27" d="M-65 3L-93 23L-73 29L-54 18ZM65 3L93 23L73 29L54 18Z"/>
+      </g>
+      <g><circle cx="-28" cy="42" r="3" fill="#8cffc9"/><circle cx="28" cy="42" r="3" fill="#8cffc9"/></g>
+    </g>
+  </symbol>
+  <symbol id="ship-warship-detailed" viewBox="-90 -110 180 220">
+    <defs>
+      <filter id="wa-g"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <linearGradient id="wa-h" x1="0" y1="-1" x2="0" y2="1"><stop stop-color="#d9e2ea"/><stop offset=".25" stop-color="#667783"/><stop offset=".55" stop-color="#202b35"/><stop offset="1" stop-color="#090f15"/></linearGradient>
+      <style><![CDATA[
+        .wa-ink{fill:#0a1118;stroke:#e5edf1;stroke-width:3;stroke-linejoin:round;stroke-linecap:round}
+        .wa-detail{fill:none;stroke:#95a9b5;stroke-width:2;stroke-linecap:round}
+        .wa-red{fill:none;stroke:#ff6f66;stroke-width:3;stroke-linecap:round}
+        .wa-engine2{fill:#ff5b51;stroke:#ffd6d1;stroke-width:2;filter:url(#wa-g);animation:wa-engine-pulse .16s ease-in-out infinite alternate}
+        @keyframes wa-engine-pulse{from{opacity:.35;transform:scaleY(.7)}to{opacity:1;transform:scaleY(1.4)}}
+        .wa-cannon{animation:wa-cannon-sway 2.6s ease-in-out infinite}
+        @keyframes wa-cannon-sway{0%,100%{transform:rotate(0deg)}50%{transform:rotate(2deg)}}
+        @media (prefers-reduced-motion: reduce){*{animation:none!important}}
+      ]]></style>
+    </defs>
+    <g>
+      <g><path class="wa-engine2" d="M-42 48L-25 108L-8 55L0 72L8 55L25 108L42 48Z"/></g>
+      <g>
+        <path class="wa-ink" fill="url(#wa-h)" d="M0-92C-22-82-44-51-52-14L-47 39L0 61L47 39L52-14C44-51 22-82 0-92Z"/>
+        <path class="wa-ink" fill="#17232d" d="M-21-64L-7-79H7L21-64L17 24H-17Z"/>
+        <path class="wa-detail" d="M0-77V49M-34-25H34M-39 3H39M-31 27H31M-14-43H14"/>
+        <path class="wa-red" d="M-34-18C-18-29 18-29 34-18M-38 39C-20 51 20 51 38 39"/>
+        <circle cx="0" cy="-48" r="8" fill="#ff6f66" filter="url(#wa-g)"/>
+        <g class="wa-cannon"><path class="wa-ink" fill="#242f39" d="M-9-21H-28L-33-10H-9Z"/><path class="wa-red" d="M-33-16H-56"/></g>
+        <g class="wa-cannon" transform="scale(-1 1)"><path class="wa-ink" fill="#242f39" d="M-9-21H-28L-33-10H-9Z"/><path class="wa-red" d="M-33-16H-56"/></g>
+        <path class="wa-ink" fill="#162129" d="M-30 0L-63 18L-42 25L-21 12ZM30 0L63 18L42 25L21 12Z"/>
+      </g>
+    </g>
+  </symbol>
+  <symbol id="ship-tanker-detailed" viewBox="-130 -105 260 210">
+    <defs>
+      <filter id="tk-glow" x="-60%" y="-60%" width="220%" height="220%">
+        <feGaussianBlur stdDeviation="4" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <linearGradient id="tk-hull" x1="0" y1="0" x2="1" y2="1">
+        <stop stop-color="#f2f7fb"/>
+        <stop offset=".3" stop-color="#89a0b0"/>
+        <stop offset=".68" stop-color="#273944"/>
+        <stop offset="1" stop-color="#0a141d"/>
+      </linearGradient>
+      <linearGradient id="tk-fuel" x1="0" y1="0" x2="1" y2="1">
+        <stop stop-color="#fff4b2"/>
+        <stop offset=".45" stop-color="#ffba48"/>
+        <stop offset="1" stop-color="#df6a21"/>
+      </linearGradient>
+      <radialGradient id="tk-glass">
+        <stop stop-color="#e9feff"/>
+        <stop offset=".42" stop-color="#4fd0ff"/>
+        <stop offset="1" stop-color="#061828"/>
+      </radialGradient>
+      <style><![CDATA[
+        .tk-hull{fill:url(#tk-hull);stroke:#dcecf4;stroke-width:3;stroke-linejoin:round}
+        .tk-panel{fill:#152630;stroke:#7992a1;stroke-width:2}
+        .tk-detail{fill:none;stroke:#7d96a5;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+        .tk-fuelTank{fill:#1b252d;stroke:#ffb247;stroke-width:2}
+        .tk-fuelCore{fill:url(#tk-fuel);stroke:#ffd77e;stroke-width:1.2;filter:url(#tk-glow);animation:tk-fuel-pulse 2.1s ease-in-out infinite}
+        .tk-engine{fill:#d6ffff;stroke:#61e8ff;stroke-width:2;filter:url(#tk-glow);transform-box:fill-box;transform-origin:center;animation:tk-burn .18s ease-in-out infinite alternate}
+        .tk-micro{fill:#ffcf70;filter:url(#tk-glow);animation:tk-blink 1.8s ease-in-out infinite}
+        @keyframes tk-burn{from{opacity:.35;transform:scaleY(.72)}to{opacity:1;transform:scaleY(1.18)}}
+        @keyframes tk-fuel-pulse{0%,100%{opacity:.78}50%{opacity:1}}
+        @keyframes tk-blink{0%,82%,100%{opacity:.35}90%{opacity:1}}
+        @media(prefers-reduced-motion:reduce){*{animation:none!important}}
+      ]]></style>
+    </defs>
+    <g>
+      <path class="tk-hull" d="M0-86 L20-67 L29-43 L42-29 L56-10 L52 20 L35 46 L18 60 L0 69 L-18 60 L-35 46 L-52 20 L-56-10 L-42-29 L-29-43 L-20-67 Z"/>
+      <path class="tk-panel" d="M-17-56 L0-72 L17-56 L13-25 L0-13 L-13-25 Z"/>
+      <ellipse cx="0" cy="-39" rx="10" ry="13" fill="url(#tk-glass)" filter="url(#tk-glow)"/>
+      <path class="tk-detail" d="M0-17V48 M-27-21H27 M-36 9H36 M-27 34H27"/>
+      <path class="tk-panel" d="M-12 2H12L18 26L0 39L-18 26Z"/>
+      <circle cx="0" cy="19" r="7" fill="#101a22" stroke="#ffb247" stroke-width="2" filter="url(#tk-glow)"/>
+      <path class="tk-detail" d="M-6 19H6 M0 13V25"/>
+      <g>
+        <g>
+          <rect class="tk-fuelTank" x="-76" y="-44" width="24" height="44" rx="10"/>
+          <ellipse class="tk-fuelCore" cx="-64" cy="-22" rx="9" ry="17"/>
+          <rect class="tk-fuelTank" x="-76" y="10" width="24" height="44" rx="10"/>
+          <ellipse class="tk-fuelCore" cx="-64" cy="32" rx="9" ry="17"/>
+          <path class="tk-detail" d="M-52-22H-32 M-52 32H-32"/>
+          <circle class="tk-micro" cx="-36" cy="-22" r="2.8"/>
+          <circle class="tk-micro" cx="-36" cy="32" r="2.8"/>
+        </g>
+        <g transform="scale(-1 1)">
+          <rect class="tk-fuelTank" x="-76" y="-44" width="24" height="44" rx="10"/>
+          <ellipse class="tk-fuelCore" cx="-64" cy="-22" rx="9" ry="17"/>
+          <rect class="tk-fuelTank" x="-76" y="10" width="24" height="44" rx="10"/>
+          <ellipse class="tk-fuelCore" cx="-64" cy="32" rx="9" ry="17"/>
+          <path class="tk-detail" d="M-52-22H-32 M-52 32H-32"/>
+          <circle class="tk-micro" cx="-36" cy="-22" r="2.8"/>
+          <circle class="tk-micro" cx="-36" cy="32" r="2.8"/>
+        </g>
+      </g>
+      <g class="tk-detail">
+        <path d="M-50-41L-31-31 M-50 22L-31 29 M50-41L31-31 M50 22L31 29"/>
+        <path d="M-52-2H-31 M52-2H31"/>
+      </g>
+      <g>
+        <path class="tk-engine" d="M-23 53L-33 97L-12 69L0 80L12 69L33 97L23 53Z"/>
+      </g>
+    </g>
+  </symbol>
+
+  <!-- Object icons below: ported from the pre-engine game's own
+       src/board.js iconMarkup(kind,color) function (see that file's own
+       comment on why THIS was the real visual source for nearly every
+       object: most of its sibling assets/svg/objects/*.svg files were
+       actually empty, so the game fell back to these inline definitions
+       in practice). Kept origin-centered (viewBox="-32 -32 64 64",
+       matching the same coordinate convention iconMarkup()'s own paths
+       already used) specifically so every path string below could be
+       copied verbatim with zero coordinate transcription/math, since
+       the highest-risk way to silently introduce a subtly-wrong shape
+       would have been re-deriving each path's numbers into a shifted
+       origin by hand. currentColor replaces iconMarkup()'s dynamic
+       color parameter (driven by CSS color on the icon's container,
+       the same convention this project's other symbols already use);
+       dark/hi stay the same fixed accent colors the original always
+       used regardless of kind color. -->
+  <symbol id="object-planet" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <circle class="obj-depth" cx="2" cy="3" r="13" fill="#050a12"/>
+    <circle class="obj-main" r="13" fill="currentColor" stroke="#f4fbff" stroke-opacity=".35"/>
+    <path d="M-10-2C-3-8 2-3 8-7M-9 5C-3 2 2 7 9 4" fill="none" stroke="#050a12" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+    <path d="M-6-11C-2-5 3-2 8 0" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="1.4"/>
+  </symbol>
+  <symbol id="object-station" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-17-4L0-13L17-4L10 12H-10Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <rect x="-7" y="-9" width="14" height="18" rx="2" fill="#152338" stroke="currentColor"/>
+    <circle cy="0" r="3.2" fill="currentColor"/>
+    <path d="M-20 14H20M-15 18H15" stroke="#768ba5" stroke-width="2" opacity=".65"/>
+  </symbol>
+  <symbol id="object-superstation" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-18 10L-13-9L0-17L13-9L18 10L0 17Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <path d="M0-12V12M-10 0H10" stroke="currentColor" stroke-width="2"/>
+    <circle r="4" fill="currentColor"/>
+    <circle r="8" fill="none" stroke="#fff" stroke-opacity=".22"/>
+  </symbol>
+  <symbol id="object-asteroid" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-18-4L-10-14L-1-12L4-5L0 7L-11 9L-19 4Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <path d="M5-7L13-13L19-6L16 5L8 9L3 2Z" fill="#111b26" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M-10-7L-5-9M10-8L14-5M-6 4L-2 3" stroke="#fff" stroke-opacity=".24" stroke-width="1.5" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="object-anomaly" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <ellipse rx="21" ry="9" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <ellipse rx="9" ry="21" fill="none" stroke="currentColor" stroke-opacity=".55" stroke-width="1.5"/>
+    <circle r="7" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <circle r="3" fill="#f4fbff"/>
+  </symbol>
+  <symbol id="object-pirate" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-15-2L-11-13L0-18L11-13L15-2L10 10L0 16L-10 10Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <path d="M-20-12C-11-17 6-17 20-10L18 4C7 1-4 0-17 6Z" fill="currentColor" opacity=".9"/>
+    <path d="M-9-6L-4-10L0-6L5-10L10-5L5 3L0 0L-5 3Z" fill="#10141b" stroke="#fff" stroke-opacity=".45"/>
+    <path d="M-14-9C-5-6 5-6 14-9" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.3"/>
+  </symbol>
+  <symbol id="object-center" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M0-19L5-6L19 0L5 5L0 19L-5 5L-19 0L-5-6Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <circle r="6" fill="currentColor"/>
+    <circle r="2" fill="#f4fbff"/>
+  </symbol>
+  <symbol id="object-base" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-18 8L-12-8L0-15L12-8L18 8L0 15Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <path d="M-8 5V-5L0-10L8-5V5L0 10Z" fill="currentColor" opacity=".85"/>
+    <circle r="3" fill="#f4fbff"/>
+  </symbol>
+  <symbol id="object-blackhole" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <ellipse rx="21" ry="8" fill="none" stroke="currentColor" stroke-width="4"/>
+    <ellipse rx="15" ry="5.5" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>
+    <circle r="8" fill="#020308"/>
+  </symbol>
+  <symbol id="object-thief_mineral" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-13-12H13L18-3V11H-18V-3Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <path d="M-13-12L0-4L13-12M0-4V11" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    <path d="M-9 4L-4-1L0 5L5-1L10 4" fill="none" stroke="#fff" stroke-opacity=".35"/>
+  </symbol>
+  <symbol id="object-thief_scrap" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-16 10L-8-12L2-8L5-16L16-10L10 12Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <path d="M-7-5L7 7M-9 7L8-5" stroke="currentColor" stroke-width="2"/>
+  </symbol>
+  <symbol id="object-nebula" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-20 3C-18-9-8-14 0-9C8-16 19-10 19 1C27 6 18 15 9 14C4 22-8 18-9 12C-20 13-25 7-20 3Z" fill="currentColor" opacity=".22" stroke="currentColor" stroke-width="2"/>
+    <path d="M-11 2C-4-4 2-3 9 3" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>
+  </symbol>
+  <symbol id="object-directional_arrow" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-18 -7H-2V-13L17 0L-2 13V7H-18Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <path d="M-12 0H9" stroke="#fff" stroke-opacity=".42" stroke-width="1.2"/>
+    <circle cx="-16" cy="0" r="2.5" fill="currentColor"/>
+  </symbol>
+  <symbol id="object-accelerator" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-16 -10H3L14 0L3 10H-16L-6 0Z" fill="#050a12" stroke="currentColor" stroke-width="2.2"/>
+    <path d="M-7 -5L4 0L-7 5" fill="none" stroke="#fff" stroke-opacity=".62" stroke-width="1.3"/>
+    <path d="M-18 -6H-10M-18 0H-11M-18 6H-10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="object-teleport" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <circle r="18" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    <circle r="12" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="1.5"/>
+    <circle r="6" fill="currentColor" opacity=".85"/>
+  </symbol>
+  <symbol id="object-broken_teleport" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <circle r="18" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="8 5"/>
+    <path d="M-15-7L-6 1L2-8L11 7" fill="none" stroke="currentColor" stroke-width="2"/>
+  </symbol>
+  <symbol id="object-glitch" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M-15-15L15 15M15-15L-15 15" stroke="currentColor" stroke-width="3"/>
+    <path d="M-19-7H-8M3-2H19M-14 7H4" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
+  </symbol>
+  <symbol id="object-signal" viewBox="-32 -32 64 64">
+    <circle class="obj-glow" cx="0" cy="0" r="25" fill="currentColor" opacity=".10"/>
+    <path d="M0-17L15 12H-15Z" fill="#050a12" stroke="currentColor" stroke-width="2"/>
+    <path d="M0-7V5M0 9V11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    <circle cy="-2" r="2" fill="#fff"/>
+  </symbol>
+  <symbol id="object-default" viewBox="-32 -32 64 64">
+    <circle cx="0" cy="0" r="5" fill="currentColor" opacity=".85"/>
+    <circle cx="0" cy="0" r="16" fill="none" stroke="currentColor" stroke-width="2.5" opacity=".55"/>
+  </symbol>
+</svg>

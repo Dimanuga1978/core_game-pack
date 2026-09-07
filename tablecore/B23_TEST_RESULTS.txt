@@ -1,0 +1,668 @@
+
+> test
+> node --test packages/core/test/*.test.js packages/content-sdk/test/*.test.js packages/authoring-sdk/test/*.test.js packages/game-pack/test/*.test.js packages/pack-linter/test/*.test.js games/coin-race/test/*.test.js packages/server/test/*.test.js packages/protocol/test/*.test.js packages/transport-ws/test/*.test.js packages/presentation/test/*.test.js packages/client-runtime/test/*.test.js packages/reference-ui/test/*.test.js games/grid-duel/test/*.test.js games/phase-quest/test/*.test.js games/sector-expedition/test/*.test.js packages/transport-ws/test/visibility.test.js tools/authoring/test/*.test.js packages/authoring-studio/test/*.test.js packages/map-editor/test/*.test.js packages/rules-editor/test/*.test.js
+
+TAP version 13
+# Subtest: initial state is valid
+ok 1 - initial state is valid
+  ---
+  duration_ms: 1.599764
+  type: 'test'
+  ...
+# Subtest: same input produces same result
+ok 2 - same input produces same result
+  ---
+  duration_ms: 4.995126
+  type: 'test'
+  ...
+# Subtest: out of bounds is rejected by game without state mutation
+ok 3 - out of bounds is rejected by game without state mutation
+  ---
+  duration_ms: 0.377086
+  type: 'test'
+  ...
+# Subtest: optional pack flow transitions from prepare to play without changing engine lifecycle
+ok 4 - optional pack flow transitions from prepare to play without changing engine lifecycle
+  ---
+  duration_ms: 4.159269
+  type: 'test'
+  ...
+# Subtest: phase-restricted actions are enforced through existing legal action loop
+ok 5 - phase-restricted actions are enforced through existing legal action loop
+  ---
+  duration_ms: 1.304227
+  type: 'test'
+  ...
+# Subtest: phase quest finishes through normal match lifecycle
+ok 6 - phase quest finishes through normal match lifecycle
+  ---
+  duration_ms: 2.094743
+  type: 'test'
+  ...
+# Subtest: sector expedition pack is valid and data-driven
+ok 7 - sector expedition pack is valid and data-driven
+  ---
+  duration_ms: 2.327573
+  type: 'test'
+  ...
+# Subtest: MOVE validates payload and does not mutate on bad target
+ok 8 - MOVE validates payload and does not mutate on bad target
+  ---
+  duration_ms: 2.306318
+  type: 'test'
+  ...
+# Subtest: movement opens only the moved hex and consumes fuel
+ok 9 - movement opens only the moved hex and consumes fuel
+  ---
+  duration_ms: 9.661035
+  type: 'test'
+  ...
+# Subtest: scan reveals a bounded set from station and is deterministic with a seed
+ok 10 - scan reveals a bounded set from station and is deterministic with a seed
+  ---
+  duration_ms: 1.219836
+  type: 'test'
+  ...
+# Subtest: random event is part of authoritative simulation, not UI
+ok 11 - random event is part of authoritative simulation, not UI
+  ---
+  duration_ms: 0.985803
+  type: 'test'
+  ...
+# Subtest: player view hides undiscovered map tiles and remote private data
+ok 12 - player view hides undiscovered map tiles and remote private data
+  ---
+  duration_ms: 1.990486
+  type: 'test'
+  ...
+# Subtest: server snapshot can be projected per player
+ok 13 - server snapshot can be projected per player
+  ---
+  duration_ms: 1.485929
+  type: 'test'
+  ...
+# Subtest: protocol preserves viewer projection for sync and updates
+ok 14 - protocol preserves viewer projection for sync and updates
+  ---
+  duration_ms: 1.255607
+  type: 'test'
+  ...
+# Subtest: 500 authoritative bot matches complete and remain deterministic
+ok 15 - 500 authoritative bot matches complete and remain deterministic
+  ---
+  duration_ms: 1419.287607
+  type: 'test'
+  ...
+# Subtest: valid authoring manifest passes
+ok 16 - valid authoring manifest passes
+  ---
+  duration_ms: 1.568715
+  type: 'test'
+  ...
+# Subtest: authoring bundle validates editor field schemas and references
+ok 17 - authoring bundle validates editor field schemas and references
+  ---
+  duration_ms: 5.63893
+  type: 'test'
+  ...
+# Subtest: lint returns structured diagnostic instead of throwing
+ok 18 - lint returns structured diagnostic instead of throwing
+  ---
+  duration_ms: 0.630569
+  type: 'test'
+  ...
+# Subtest: created bundle is clone-safe
+ok 19 - created bundle is clone-safe
+  ---
+  duration_ms: 0.437942
+  type: 'test'
+  ...
+# Subtest: entity values obey declared field schema
+ok 20 - entity values obey declared field schema
+  ---
+  duration_ms: 1.461187
+  type: 'test'
+  ...
+# Subtest: canonical mutation API validates and updates entities atomically
+ok 21 - canonical mutation API validates and updates entities atomically
+  ---
+  duration_ms: 0.831114
+  type: 'test'
+  ...
+# Subtest: studio creates and selects a data entity through declared schema
+ok 22 - studio creates and selects a data entity through declared schema
+  ---
+  duration_ms: 10.81149
+  type: 'test'
+  ...
+# Subtest: studio edits data without changing schema
+ok 23 - studio edits data without changing schema
+  ---
+  duration_ms: 1.783042
+  type: 'test'
+  ...
+# Subtest: studio rejects undeclared editor fields
+ok 24 - studio rejects undeclared editor fields
+  ---
+  duration_ms: 0.975539
+  type: 'test'
+  ...
+# Subtest: studio validation uses the authoring SDK validator
+ok 25 - studio validation uses the authoring SDK validator
+  ---
+  duration_ms: 2.190994
+  type: 'test'
+  ...
+# Subtest: studio mutation rejects values outside declared schema
+ok 26 - studio mutation rejects values outside declared schema
+  ---
+  duration_ms: 3.371414
+  type: 'test'
+  ...
+# Subtest: client runtime builds a presentation frame from authoritative protocol data
+ok 27 - client runtime builds a presentation frame from authoritative protocol data
+  ---
+  duration_ms: 3.072972
+  type: 'test'
+  ...
+# Subtest: local UI state never becomes an authoritative protocol action
+ok 28 - local UI state never becomes an authoritative protocol action
+  ---
+  duration_ms: 1.367354
+  type: 'test'
+  ...
+# Subtest: interactive clients send actions only after sync and with authoritative version
+ok 29 - interactive clients send actions only after sync and with authoritative version
+  ---
+  duration_ms: 1.780321
+  type: 'test'
+  ...
+# Subtest: TV runtime can present state but cannot submit game actions
+ok 30 - TV runtime can present state but cannot submit game actions
+  ---
+  duration_ms: 0.443576
+  type: 'test'
+  ...
+# Subtest: older network updates cannot roll presentation back
+ok 31 - older network updates cannot roll presentation back
+  ---
+  duration_ms: 0.449977
+  type: 'test'
+  ...
+# Subtest: content catalog is data-only and clone-safe
+ok 32 - content catalog is data-only and clone-safe
+  ---
+  duration_ms: 3.424528
+  type: 'test'
+  ...
+# Subtest: map materialization validates references
+ok 33 - map materialization validates references
+  ---
+  duration_ms: 0.909063
+  type: 'test'
+  ...
+# Subtest: missing content fails explicitly
+ok 34 - missing content fails explicitly
+  ---
+  duration_ms: 4.651546
+  type: 'test'
+  ...
+# Subtest: catalog can be serialized as JSON-compatible content
+ok 35 - catalog can be serialized as JSON-compatible content
+  ---
+  duration_ms: 2.124674
+  type: 'test'
+  ...
+# Subtest: match starts from lobby and owns lifecycle state
+ok 36 - match starts from lobby and owns lifecycle state
+  ---
+  duration_ms: 1.985996
+  type: 'test'
+  ...
+# Subtest: actions are rejected before match starts
+ok 37 - actions are rejected before match starts
+  ---
+  duration_ms: 0.498959
+  type: 'test'
+  ...
+# Subtest: finished game closes match and blocks future actions
+ok 38 - finished game closes match and blocks future actions
+  ---
+  duration_ms: 2.816727
+  type: 'test'
+  ...
+# Subtest: abort is explicit and does not mutate finished matches
+ok 39 - abort is explicit and does not mutate finished matches
+  ---
+  duration_ms: 0.578212
+  type: 'test'
+  ...
+# Subtest: replay reproduces identical final state and event history
+ok 40 - replay reproduces identical final state and event history
+  ---
+  duration_ms: 12.932471
+  type: 'test'
+  ...
+# Subtest: replay does not mutate recorded initial state
+ok 41 - replay does not mutate recorded initial state
+  ---
+  duration_ms: 0.550249
+  type: 'test'
+  ...
+# Subtest: same seed produces identical random sequence
+ok 42 - same seed produces identical random sequence
+  ---
+  duration_ms: 2.926065
+  type: 'test'
+  ...
+# Subtest: different seeds diverge
+ok 43 - different seeds diverge
+  ---
+  duration_ms: 0.360469
+  type: 'test'
+  ...
+# Subtest: rejects action by inactive player without mutation
+ok 44 - rejects action by inactive player without mutation
+  ---
+  duration_ms: 3.341044
+  type: 'test'
+  ...
+# Subtest: moves active player and emits events
+ok 45 - moves active player and emits events
+  ---
+  duration_ms: 0.678824
+  type: 'test'
+  ...
+# Subtest: runAction fails closed when applyAction rejects after validation
+ok 46 - runAction fails closed when applyAction rejects after validation
+  ---
+  duration_ms: 2.765477
+  type: 'test'
+  ...
+# Subtest: runAction isolates authoritative state from game mutation on rejected execution
+ok 47 - runAction isolates authoritative state from game mutation on rejected execution
+  ---
+  duration_ms: 0.562973
+  type: 'test'
+  ...
+# Subtest: runAction turns game exceptions into rejected actions
+ok 48 - runAction turns game exceptions into rejected actions
+  ---
+  duration_ms: 0.602535
+  type: 'test'
+  ...
+# Subtest: two independent packs register without engine changes
+ok 49 - two independent packs register without engine changes
+  ---
+  duration_ms: 2.906087
+  type: 'test'
+  ...
+# Subtest: second pack runs through the same match lifecycle
+ok 50 - second pack runs through the same match lifecycle
+  ---
+  duration_ms: 1.205039
+  type: 'test'
+  ...
+# Subtest: invalid pack contract is rejected early
+ok 51 - invalid pack contract is rejected early
+  ---
+  duration_ms: 0.85226
+  type: 'test'
+  ...
+# Subtest: hex coordinate helpers round-trip through pixel space
+ok 52 - hex coordinate helpers round-trip through pixel space
+  ---
+  duration_ms: 6.493499
+  type: 'test'
+  ...
+# Subtest: axial distance and radius enumeration are consistent
+ok 53 - axial distance and radius enumeration are consistent
+  ---
+  duration_ms: 0.379509
+  type: 'test'
+  ...
+# Subtest: map editor selects, paints terrain and places objects without runtime dependencies
+ok 54 - map editor selects, paints terrain and places objects without runtime dependencies
+  ---
+  duration_ms: 2.016629
+  type: 'test'
+  ...
+# Subtest: map editor can erase objects and reports neighbors
+ok 55 - map editor can erase objects and reports neighbors
+  ---
+  duration_ms: 0.949717
+  type: 'test'
+  ...
+# Subtest: map editor rejects invalid refs and malformed map shape
+ok 56 - map editor rejects invalid refs and malformed map shape
+  ---
+  duration_ms: 1.017242
+  type: 'test'
+  ...
+# Subtest: complete Sector Expedition bundle passes preflight lint
+ok 57 - complete Sector Expedition bundle passes preflight lint
+  ---
+  duration_ms: 3.227859
+  type: 'test'
+  ...
+# Subtest: linter reports cross-layer manifest mismatch without throwing
+ok 58 - linter reports cross-layer manifest mismatch without throwing
+  ---
+  duration_ms: 0.77675
+  type: 'test'
+  ...
+# Subtest: linter catches missing content references
+ok 59 - linter catches missing content references
+  ---
+  duration_ms: 0.564807
+  type: 'test'
+  ...
+# Subtest: assertGamePackReady fails closed on incompatible content
+ok 60 - assertGamePackReady fails closed on incompatible content
+  ---
+  duration_ms: 0.824541
+  type: 'test'
+  ...
+# Subtest: default pack linter refuses JavaScript module inputs before execution
+ok 61 - default pack linter refuses JavaScript module inputs before execution
+  ---
+  duration_ms: 181.189899
+  type: 'test'
+  ...
+# Subtest: trusted pack descriptor verifies with Ed25519 key
+ok 62 - trusted pack descriptor verifies with Ed25519 key
+  ---
+  duration_ms: 8.299799
+  type: 'test'
+  ...
+# Subtest: trusted pack rejects tampering and unknown keys
+ok 63 - trusted pack rejects tampering and unknown keys
+  ---
+  duration_ms: 2.620332
+  type: 'test'
+  ...
+# Subtest: linter can require a trusted signature for third-party descriptors
+ok 64 - linter can require a trusted signature for third-party descriptors
+  ---
+  duration_ms: 0.73979
+  type: 'test'
+  ...
+# Subtest: trusted key capability policy blocks undeclared permissions
+ok 65 - trusted key capability policy blocks undeclared permissions
+  ---
+  duration_ms: 1.586463
+  type: 'test'
+  ...
+# Subtest: same authoritative facts produce client-specific presentation without changing facts
+ok 66 - same authoritative facts produce client-specific presentation without changing facts
+  ---
+  duration_ms: 2.90828
+  type: 'test'
+  ...
+# Subtest: presentation frame is detached from authoritative snapshot and events
+ok 67 - presentation frame is detached from authoritative snapshot and events
+  ---
+  duration_ms: 0.572623
+  type: 'test'
+  ...
+# Subtest: local UI intents are explicitly local and cannot masquerade as actions
+ok 68 - local UI intents are explicitly local and cannot masquerade as actions
+  ---
+  duration_ms: 1.005146
+  type: 'test'
+  ...
+# Subtest: client capabilities do not expose input for TV
+ok 69 - client capabilities do not expose input for TV
+  ---
+  duration_ms: 0.303112
+  type: 'test'
+  ...
+# Subtest: sync, action and spectator permissions work through protocol
+ok 70 - sync, action and spectator permissions work through protocol
+  ---
+  duration_ms: 3.749209
+  type: 'test'
+  ...
+# Subtest: reconnect sync and out of order protection restore latest state
+ok 71 - reconnect sync and out of order protection restore latest state
+  ---
+  duration_ms: 3.043819
+  type: 'test'
+  ...
+# Subtest: player cannot sync another match and sync subscribes the connection to that match
+ok 72 - player cannot sync another match and sync subscribes the connection to that match
+  ---
+  duration_ms: 0.554666
+  type: 'test'
+  ...
+# Subtest: ClientSession cannot switch matches after binding
+ok 73 - ClientSession cannot switch matches after binding
+  ---
+  duration_ms: 1.491781
+  type: 'test'
+  ...
+# Subtest: public protocol rejects invalid action envelopes
+ok 74 - public protocol rejects invalid action envelopes
+  ---
+  duration_ms: 0.362081
+  type: 'test'
+  ...
+# Subtest: auth token cannot be forged by changing player claims
+ok 75 - auth token cannot be forged by changing player claims
+  ---
+  duration_ms: 1.821337
+  type: 'test'
+  ...
+# Subtest: reference UI renders a complete 5x5 board from public state
+ok 76 - reference UI renders a complete 5x5 board from public state
+  ---
+  duration_ms: 1.607358
+  type: 'test'
+  ...
+# Subtest: reference UI consumes presentation view without engine internals
+ok 77 - reference UI consumes presentation view without engine internals
+  ---
+  duration_ms: 3.652617
+  type: 'test'
+  ...
+# Subtest: reference UI formats public events
+ok 78 - reference UI formats public events
+  ---
+  duration_ms: 0.450102
+  type: 'test'
+  ...
+# Subtest: rule definition and rule set validate as data
+ok 79 - rule definition and rule set validate as data
+  ---
+  duration_ms: 5.351845
+  type: 'test'
+  ...
+# Subtest: rules editor creates, updates and removes declarative rules
+ok 80 - rules editor creates, updates and removes declarative rules
+  ---
+  duration_ms: 4.768006
+  type: 'test'
+  ...
+# Subtest: invalid rule nodes are rejected without execution
+ok 81 - invalid rule nodes are rejected without execution
+  ---
+  duration_ms: 1.3817
+  type: 'test'
+  ...
+# Subtest: editor snapshots are clone-safe
+ok 82 - editor snapshots are clone-safe
+  ---
+  duration_ms: 0.514527
+  type: 'test'
+  ...
+# Subtest: public snapshots never disclose the server RNG seed
+ok 83 - public snapshots never disclose the server RNG seed
+  ---
+  duration_ms: 2.351466
+  type: 'test'
+  ...
+# Subtest: player snapshot remains projected and does not expose hidden RNG state
+ok 84 - player snapshot remains projected and does not expose hidden RNG state
+  ---
+  duration_ms: 4.652941
+  type: 'test'
+  ...
+# Subtest: snapshot projection is cached per viewer within a match version
+ok 85 - snapshot projection is cached per viewer within a match version
+  ---
+  duration_ms: 3.098004
+  type: 'test'
+  ...
+# Subtest: live match owns deterministic RNG progression
+ok 86 - live match owns deterministic RNG progression
+  ---
+  duration_ms: 9.432553
+  type: 'test'
+  ...
+# Subtest: host owns match and returns snapshot
+ok 87 - host owns match and returns snapshot
+  ---
+  duration_ms: 2.2477
+  type: 'test'
+  ...
+# Subtest: non participant cannot start or act
+ok 88 - non participant cannot start or act
+  ---
+  duration_ms: 0.653282
+  type: 'test'
+  ...
+# Subtest: actor spoofing is rejected
+ok 89 - actor spoofing is rejected
+  ---
+  duration_ms: 0.503837
+  type: 'test'
+  ...
+# Subtest: stale version is rejected without mutation
+ok 90 - stale version is rejected without mutation
+  ---
+  duration_ms: 0.47155
+  type: 'test'
+  ...
+# Subtest: valid action advances authoritative state and version
+ok 91 - valid action advances authoritative state and version
+  ---
+  duration_ms: 1.301197
+  type: 'test'
+  ...
+# Subtest: invalid turn does not mutate authoritative state
+ok 92 - invalid turn does not mutate authoritative state
+  ---
+  duration_ms: 1.365441
+  type: 'test'
+  ...
+# Subtest: unknown match is rejected
+ok 93 - unknown match is rejected
+  ---
+  duration_ms: 0.375833
+  type: 'test'
+  ...
+# Subtest: RFC6455 codec encodes and parses 64-bit payload length
+ok 94 - RFC6455 codec encodes and parses 64-bit payload length
+  ---
+  duration_ms: 3.187836
+  type: 'test'
+  ...
+# Subtest: RFC6455 parser reassembles fragmented text messages
+ok 95 - RFC6455 parser reassembles fragmented text messages
+  ---
+  duration_ms: 1.079603
+  type: 'test'
+  ...
+# Subtest: RFC6455 parser rejects non-minimal 64-bit lengths
+ok 96 - RFC6455 parser rejects non-minimal 64-bit lengths
+  ---
+  duration_ms: 0.645268
+  type: 'test'
+  ...
+# Subtest: RFC6455 parser rejects reserved opcodes
+ok 97 - RFC6455 parser rejects reserved opcodes
+  ---
+  duration_ms: 0.380864
+  type: 'test'
+  ...
+# Subtest: RFC6455 parser accepts interleaved control frames during fragmented messages
+ok 98 - RFC6455 parser accepts interleaved control frames during fragmented messages
+  ---
+  duration_ms: 0.887789
+  type: 'test'
+  ...
+# Subtest: RFC6455 parser rejects invalid close payload
+ok 99 - RFC6455 parser rejects invalid close payload
+  ---
+  duration_ms: 0.30811
+  type: 'test'
+  ...
+# Subtest: token authentication derives identity from verified claims, not HELLO playerId
+ok 100 - token authentication derives identity from verified claims, not HELLO playerId
+  ---
+  duration_ms: 51.962543
+  type: 'test'
+  ...
+# Subtest: invalid auth token is rejected
+ok 101 - invalid auth token is rejected
+  ---
+  duration_ms: 20.152349
+  type: 'test'
+  ...
+# Subtest: websocket broadcasts player-scoped snapshots to different players
+ok 102 - websocket broadcasts player-scoped snapshots to different players
+  ---
+  duration_ms: 63.864605
+  type: 'test'
+  ...
+# Subtest: real websocket E2E: two players, spectator, update broadcast and reconnect sync
+ok 103 - real websocket E2E: two players, spectator, update broadcast and reconnect sync
+  ---
+  duration_ms: 125.901196
+  type: 'test'
+  ...
+# Subtest: websocket UPDATE is scoped to subscribed match
+ok 104 - websocket UPDATE is scoped to subscribed match
+  ---
+  duration_ms: 88.463146
+  type: 'test'
+  ...
+# Subtest: createEntity creates stable content entity
+ok 105 - createEntity creates stable content entity
+  ---
+  duration_ms: 2.123586
+  type: 'test'
+  ...
+# Subtest: setField uses declared schema field
+ok 106 - setField uses declared schema field
+  ---
+  duration_ms: 0.822385
+  type: 'test'
+  ...
+# Subtest: undeclared field is rejected
+ok 107 - undeclared field is rejected
+  ---
+  duration_ms: 0.539061
+  type: 'test'
+  ...
+# Subtest: removeEntity removes only selected entity
+ok 108 - removeEntity removes only selected entity
+  ---
+  duration_ms: 0.484875
+  type: 'test'
+  ...
+# Subtest: save/load round-trip preserves authored data
+ok 109 - save/load round-trip preserves authored data
+  ---
+  duration_ms: 22.624198
+  type: 'test'
+  ...
+1..109
+# tests 109
+# suites 0
+# pass 109
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8484.061072

@@ -1,0 +1,8 @@
+{
+  "id": "grid-duel",
+  "name": "Grid Duel",
+  "version": "1.0.0",
+  "status": "preview",
+  "description": "Minimal reference game (no manifest object exists in its own source -- gridDuel is used throughout this repo as a bare game-rules test fixture, not wrapped in createGamePack()). Hand-written here rather than generated for that reason; see tools/launcher/generate-manifests.mjs's module doc comment for why the other three games' manifest.json files ARE generated from real code instead.",
+  "internal": true
+}

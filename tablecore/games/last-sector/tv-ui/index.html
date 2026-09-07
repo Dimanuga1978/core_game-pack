@@ -1,0 +1,50 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Last Sector — ТВ</title><link rel="stylesheet" href="./style.css">  <link rel="stylesheet" href="../client/design-system.css">
+</head><body>
+<div id="tutorial" class="tutorial-overlay" hidden aria-live="polite">
+  <div class="tutorial-backdrop"></div>
+  <section class="tutorial-card" role="dialog" aria-modal="true" aria-labelledby="tutorial-title">
+    <div class="tutorial-kicker">КАК ИГРАТЬ • LAST SECTOR</div>
+    <div class="tutorial-step" id="tutorial-step">1 / 1</div>
+    <div class="tutorial-focus" id="tutorial-focus"></div>
+    <h1 id="tutorial-title">ДОБРО ПОЖАЛОВАТЬ</h1>
+    <p id="tutorial-body"></p>
+    <div class="tutorial-progress"><i id="tutorial-progress"></i></div>
+    <button id="tutorial-skip" type="button" class="tutorial-skip" title="Skip tutorial">ПРОПУСТИТЬ <kbd>Esc</kbd></button>
+  </section>
+</div>
+<div class="tv-shell">
+  <header class="tv-topbar">
+    <div class="tv-brand"><span class="brand-mark">LS</span><div><strong>ПОСЛЕДНИЙ СЕКТОР</strong><small>ТАКТИЧЕСКАЯ ТРАНСЛЯЦИЯ</small></div></div>
+    <div class="turn-pod"><span>ТЕКУЩАЯ ПАРТИЯ</span><b id="event-sub">Публичное состояние сектора</b></div>
+    <div class="tv-status"><span class="rec-dot"></span><span id="status">НЕТ СВЯЗИ</span></div>
+  </header>
+
+  <main class="tv-layout">
+    <aside class="left-rail">
+      <div class="rail-title">ИГРОКИ</div>
+      <div id="operator-list" class="operator-list"></div>
+      <div class="legend-card">
+        <div class="rail-title">ЛЕГЕНДА</div>
+        <div><i class="legend-swatch cyan"></i> Ваш корабль</div>
+        <div><i class="legend-swatch blue"></i> Другие корабли</div>
+        <div><i class="legend-swatch amber"></i> Особый объект</div>
+        <div><i class="legend-swatch red"></i> Враждебный объект</div>
+      </div>
+    </aside>
+
+    <section class="main-stage">
+      <div class="hero-strip">
+        <div><span class="eyebrow">СОБЫТИЕ</span><h1 id="event-title">ОЖИДАНИЕ СИГНАЛА</h1></div>
+        <div class="hero-meta"><span>ХОД —</span><b>ТАКТИЧЕСКАЯ ТРАНСЛЯЦИЯ</b></div>
+      </div>
+      <section class="map-frame"><div id="map-viewport" class="map-viewport"><div id="map-world" class="map-world"><div id="grid"></div><div id="fx-layer" class="ls-fx-layer" aria-hidden="true"></div><div id="tutorial-scene" class="ls-tutorial-scene" hidden></div></div></div><div class="scanline"></div><div class="map-label top-left">СЕКТОР 04 · В ИГРЕ</div><div class="map-label top-right">ПУБЛИЧНЫЙ ВИД</div><div class="map-label bottom-left">ПОТОК СОБЫТИЙ</div><div class="map-label bottom-right">16:9</div></section>
+    </section>
+
+    <aside class="feed-panel">
+      <div class="feed-head"><span class="eyebrow">ЛЕНТА СОБЫТИЙ</span><span class="live-pill"><i></i> В ИГРЕ</span></div>
+      <div id="feed" class="feed"></div>
+    </aside>
+  </main>
+</div>
+<script type="module" src="./main.js"></script>
+</body></html>

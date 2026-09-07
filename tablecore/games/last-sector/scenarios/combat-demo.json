@@ -1,0 +1,15 @@
+{
+  "id": "combat-demo",
+  "version": 1,
+  "playerSpawns": {
+    "p1": { "coord": "1,1", "shipType": "warship" },
+    "p2": { "coord": "2,1", "shipType": "scout", "overrides": { "hp": 2, "maxHp": 2, "shield": 1 } }
+  },
+  "boardLayout": {
+    "cells": {
+      "1,2": { "kind": "asteroid" },
+      "3,1": { "kind": "planet", "loot": { "type": "mineral", "value": 1500, "slots": 1 }, "lootVisibility": "public-after-discovery" },
+      "4,1": { "kind": "station" }
+    }
+  }
+}

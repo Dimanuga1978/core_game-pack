@@ -1,0 +1,16 @@
+{
+  "id": "discovery-demo",
+  "version": 1,
+  "playerSpawns": {
+    "p1": { "coord": "2,2", "shipType": "scout" },
+    "p2": { "coord": "6,6", "shipType": "transport" }
+  },
+  "boardLayout": {
+    "cells": {
+      "3,2": { "kind": "planet", "loot": { "type": "artifact", "value": 7000, "slots": 2 }, "lootVisibility": "first-discoverer" },
+      "4,2": { "kind": "teleport", "to": "5,5", "revealedGlobally": false },
+      "5,5": { "kind": "station" },
+      "1,2": { "kind": "nebula", "exit": 3 }
+    }
+  }
+}

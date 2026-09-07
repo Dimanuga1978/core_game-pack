@@ -1,0 +1,9 @@
+{
+  "id": "sector-expedition",
+  "name": "Sector Expedition",
+  "version": "0.1.0",
+  "apiVersion": "1.0.0",
+  "hiddenInformation": true,
+  "status": "preview",
+  "internal": true
+}

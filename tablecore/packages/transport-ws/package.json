@@ -1,0 +1,19 @@
+{
+  "name": "@tablecore/transport-ws",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "@tablecore/observability": "*"
+  },
+  "devDependencies": {
+    "@tablecore/game-grid-duel": "*",
+    "@tablecore/game-sector-expedition": "*",
+    "@tablecore/protocol": "*",
+    "@tablecore/server": "*"
+  }
+}

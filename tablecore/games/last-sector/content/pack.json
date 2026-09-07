@@ -1,0 +1,165 @@
+{
+  "id": "last-sector",
+  "version": 1,
+  "boardGeneration": {
+    "objectDensity": 0.55,
+    "objectPool": [
+      "planet",
+      "station",
+      "asteroid",
+      "anomaly",
+      "pirate",
+      "nebula",
+      "signal",
+      "accelerator",
+      "teleport",
+      "blackhole",
+      "superstation",
+      "directional_arrow",
+      "broken_teleport",
+      "thief_mineral",
+      "thief_scrap"
+    ]
+  },
+  "ships": {
+    "scout": {
+      "hp": 3,
+      "shield": 1,
+      "fuel": 10,
+      "moves": 4,
+      "cargoSlots": 2,
+      "attack": 1,
+      "lootBonus": 1,
+      "lootLuck": 0,
+      "canTeleport": true
+    },
+    "transport": {
+      "hp": 3,
+      "shield": 3,
+      "fuel": 10,
+      "moves": 2,
+      "cargoSlots": 6,
+      "attack": 1,
+      "lootBonus": 1.15,
+      "lootLuck": 0.38,
+      "canTeleport": true
+    },
+    "warship": {
+      "hp": 3,
+      "shield": 4,
+      "fuel": 10,
+      "moves": 3,
+      "cargoSlots": 2,
+      "attack": 3,
+      "lootBonus": 1,
+      "lootLuck": 0,
+      "canTeleport": false
+    },
+    "tanker": {
+      "hp": 2,
+      "shield": 0,
+      "fuel": 99,
+      "moves": 1,
+      "cargoSlots": 0,
+      "attack": 0,
+      "lootBonus": 1,
+      "lootLuck": 0,
+      "canTeleport": false
+    }
+  },
+  "loot": {
+    "scrap": {
+      "value": 500,
+      "slots": 1,
+      "visibility": "public-after-discovery"
+    },
+    "mineral": {
+      "value": 1500,
+      "slots": 1,
+      "visibility": "public-after-discovery"
+    },
+    "technology": {
+      "value": 3000,
+      "slots": 1,
+      "visibility": "first-discoverer"
+    },
+    "artifact": {
+      "value": 7000,
+      "slots": 2,
+      "visibility": "first-discoverer"
+    },
+    "ancient": {
+      "value": 12000,
+      "slots": 3,
+      "visibility": "first-discoverer"
+    }
+  },
+  "sectorObjects": {
+    "base": {
+      "category": "structure",
+      "public": true
+    },
+    "station": {
+      "category": "structure",
+      "public": true
+    },
+    "planet": {
+      "category": "resource",
+      "lootTable": "loot"
+    },
+    "asteroid": {
+      "category": "terrain",
+      "public": true
+    },
+    "anomaly": {
+      "category": "hazard",
+      "public": true
+    },
+    "pirate": {
+      "category": "enemy",
+      "public": true
+    },
+    "nebula": {
+      "category": "terrain",
+      "exitMin": 2,
+      "exitMax": 5
+    },
+    "signal": {
+      "category": "event",
+      "public": true
+    },
+    "accelerator": {
+      "category": "transport",
+      "publicAfterDiscovery": true
+    },
+    "teleport": {
+      "category": "transport",
+      "publicAfterDiscovery": true
+    },
+    "blackhole": {
+      "category": "hazard",
+      "public": true
+    },
+    "superstation": {
+      "category": "structure"
+    },
+    "directional_arrow": {
+      "category": "movement"
+    },
+    "broken_teleport": {
+      "category": "transport"
+    },
+    "thief_mineral": {
+      "category": "hazard"
+    },
+    "thief_scrap": {
+      "category": "hazard"
+    },
+    "glitch": {
+      "category": "event"
+    },
+    "center": {
+      "category": "special"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "id": "phase-quest",
+  "name": "Phase Quest",
+  "version": "1.0.0",
+  "apiVersion": "1.0.0",
+  "minPlayers": 2,
+  "maxPlayers": 4,
+  "status": "preview",
+  "internal": true
+}

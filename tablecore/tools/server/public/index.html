@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><link rel="icon" href="data:,">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TableCore — создать игру</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<header>
+  <h1 id="page-title">Создать игру</h1>
+  <p class="sub" id="page-sub">Укажите число игроков — сразу получите общую ссылку и QR-код.</p>
+</header>
+
+<main>
+  <form id="lobby-form">
+    <label id="game-select-block" hidden>
+      Игра
+      <select id="game-select" required></select>
+    </label>
+    <div id="game-heading" hidden>
+      <h2 id="game-heading-name"></h2>
+      <p id="game-heading-description" class="sub"></p>
+    </div>
+    <div id="game-warning" class="warning" hidden></div>
+
+    <label>
+      Число игроков
+      <input type="number" id="seat-count" min="1" max="16" value="4" required>
+    </label>
+
+    <button type="submit" id="submit-btn">Создать</button>
+  </form>
+
+  <div id="error" class="error" hidden></div>
+
+  <section id="result" hidden>
+    <h2>Ждём игроков</h2>
+    <p id="result-meta"></p>
+    <div id="shared-link"></div>
+    <div id="seats"></div>
+
+    <div id="start-block">
+      <button type="button" id="start-as-is-btn">Начать с подключившимися</button>
+      <button type="button" id="start-with-bots-btn" hidden>Добавить ботов и начать</button>
+      <p id="start-warning" class="warning" hidden></p>
+    </div>
+
+    <button type="button" id="create-another">Создать ещё одну игру</button>
+  </section>
+</main>
+
+<script type="module" src="./create.js"></script>
+</body>
+</html>

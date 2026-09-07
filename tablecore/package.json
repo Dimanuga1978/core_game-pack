@@ -1,0 +1,18 @@
+{
+  "name": "tablecore-v2",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "games/*"
+  ],
+  "scripts": {
+    "test": "node --test packages/core/test/*.test.js packages/content-sdk/test/*.test.js packages/authoring-sdk/test/*.test.js packages/game-pack/test/*.test.js packages/game-api/test/*.test.js packages/pack-linter/test/*.test.js packages/server/test/*.test.js packages/protocol/test/*.test.js packages/transport-ws/test/*.test.js packages/presentation/test/*.test.js packages/client-runtime/test/*.test.js packages/reference-ui/test/*.test.js packages/transport-ws/test/visibility.test.js tools/authoring/test/*.test.js packages/authoring-studio/test/*.test.js packages/map-editor/test/*.test.js packages/rules-editor/test/*.test.js packages/worker-pool/test/*.test.js packages/observability/test/*.test.js packages/launcher/test/*.test.js packages/browser-client/test/*.test.js packages/presentation-client/test/*.test.js packages/qrcode/test/*.test.js tools/server/test/*.test.js tools/test/*.test.js games/*/test/*.test.js games/*/test/*.test.mjs",
+    "launcher": "node tools/launcher/server.mjs",
+    "server": "node tools/server/start.mjs",
+    "server:demo": "TABLECORE_SERVER_CONFIG=tools/server/example.config.mjs node tools/server/start.mjs"
+  },
+  "dependencies": {
+    "immer": "^11.1.18"
+  }
+}

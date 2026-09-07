@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><link rel="icon" href="data:,"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Последний Сектор — Игрок</title>
+<link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="../client/design-system.css">
+</head>
+<body>
+<div class="app-shell">
+  <svg class="icon-sprite" aria-hidden="true"><use href="./icons.svg#i-info"></use></svg>
+  <header class="topbar">
+    <div class="brand-lockup">
+      <div class="brand-mark">LS</div>
+      <div>
+        <strong>ПОСЛЕДНИЙ СЕКТОР</strong>
+        <span>ТАКТИЧЕСКОЕ УПРАВЛЕНИЕ</span>
+      </div>
+    </div>
+    <div class="topbar-center">
+      <span class="eyebrow">УПРАВЛЕНИЕ СЕКТОРОМ</span>
+      <b id="turn">Active: —</b>
+    </div>
+    <div class="topbar-right">
+      <span id="status" class="status-bad">DISCONNECTED</span>
+      <span class="player-chip"><i></i><span id="player">—</span></span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="ls-panel panel map-panel">
+      <div class="panel-head map-head">
+        <div>
+          <span class="eyebrow">ТАКТИЧЕСКАЯ КАРТА</span>
+          <h1>Поле сектора</h1>
+        </div>
+        <div class="map-status">
+          <span class="pulse"></span> LIVE
+        </div>
+      </div>
+      <div class="legend">
+        <span><i class="legend-dot own-dot"></i>Ваш корабль</span>
+        <span><i class="legend-dot other-dot"></i>Другие корабли</span>
+        <span><i class="legend-line"></i>Публичные позиции</span>
+      </div>
+      <div class="map-frame">
+        <div id="grid"></div>
+        <div class="map-corner top-left">СЕКТОР 04 / 09</div>
+        <div class="map-corner top-right">НАВИГАЦИЯ</div>
+        <div class="map-corner bottom-left">ТАКТИЧЕСКИЙ ВИД</div>
+        <div class="map-corner bottom-right">v1.22</div>
+      </div>
+    </section>
+
+    <aside class="side-stack">
+      <section class="ls-panel panel ship-card">
+        <div class="section-kicker">ВАШ КОРАБЛЬ</div>
+        <div class="ship-hero">
+          <div class="ship-emblem">◈</div>
+          <div class="ship-title"><strong id="ship-type">—</strong><span id="ship-hp">—</span></div>
+        </div>
+        <div class="meter-list">
+          <div class="meter-row"><div><label>КОРПУС</label><b id="hp-readout">—</b></div><div class="meter"><i id="hp-bar"></i></div></div>
+          <div class="meter-row"><div><label>ТОПЛИВО</label><b id="fuel-readout">—</b></div><div class="meter"><i id="fuel-bar"></i></div></div>
+          <div class="meter-row"><div><label>ОД</label><b id="move-readout">—</b></div><div class="meter"><i id="move-bar"></i></div></div>
+        </div>
+        <div class="resource-strip"><span><small>ОЧКИ</small><b id="score">0</b></span><span><small>ГРУЗ</small><b id="cargo">0</b></span></div>
+      </section>
+      <section class="ls-panel panel actions-panel"><div class="section-kicker">ТАКТИЧЕСКИЕ ДЕЙСТВИЯ</div><div id="buttons" class="action-grid"></div></section>
+      <section class="ls-panel panel intel-panel"><div class="section-kicker">ЖУРНАЛ СОБЫТИЙ</div><div id="events" class="event-list"></div></section>
+    </aside>
+  </main>
+</div>
+  <div class="mobile-hud">
+    <div class="mobile-strip">
+      <button id="mobile-info" class="ls-icon-button icon-button ghost" aria-label="Информация о корабле" title="Информация о корабле"><svg><use href="./icons.svg#i-info"></use></svg></button>
+      <div class="mobile-stat"><span>HP</span><b id="m-hp">—</b></div>
+      <div class="mobile-stat"><span>ТОПЛИВО</span><b id="m-fuel">—</b></div>
+      <div class="mobile-stat"><span>ОД</span><b id="m-moves">—</b></div>
+      <div class="mobile-stat"><span>ХОД</span><b id="m-turn">—</b></div>
+      <button id="mobile-menu" class="ls-icon-button icon-button ghost" aria-label="Открыть управление" title="Открыть управление"><svg><use href="./icons.svg#i-menu"></use></svg></button>
+    </div>
+    <div id="mobile-sheet" class="mobile-sheet" hidden></div>
+    <div class="mobile-actions" id="mobile-actions"></div>
+  </div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>

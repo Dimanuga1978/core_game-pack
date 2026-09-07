@@ -1,0 +1,95 @@
+/* Shared design tokens for Last Sector's player-ui and tv-ui pages.
+ *
+ * Both pages' own style.css files reference dozens of `--ls-*` custom
+ * properties (colors, typography, radius, motion, spacing, safe-area
+ * insets) but never DEFINE any of them -- confirmed directly: neither
+ * file has a `:root` block declaring these, they were always meant to
+ * come from an external stylesheet (both HTML files already had a
+ * `<link>` to one). That file never existed anywhere in the repository.
+ * Real people testing Last Sector saw this as `index.css 404` in the
+ * browser console, and (more importantly, the actual bug behind that
+ * cosmetic-looking message) both pages rendering with unstyled/default
+ * browser colors instead of the intended dark tactical theme -- not a
+ * missing nice-to-have, every color/spacing/radius/font value both
+ * pages use comes from here.
+ *
+ * Values are not invented from nothing: derived from the color-coding
+ * ALREADY hardcoded elsewhere in this game's own CSS and legend text
+ * (games/last-sector/tv-ui/style.css's `.cell[data-kind="..."]` rules
+ * and its own on-screen legend -- "cyan = your ship, blue = other
+ * ships, amber = special object, red = hostile object" -- and its
+ * `.map-frame`/body background tones), so the result is visually
+ * consistent with what the rest of the game's CSS already assumes,
+ * not a new, independently-invented palette.
+ */
+:root {
+  color-scheme: dark;
+
+  /* --- Backgrounds & surfaces --- */
+  --ls-color-bg-0: #06090f;
+  --ls-color-bg-1: #0b111b;
+  --ls-color-surface-1: #0f1720;
+  --ls-color-surface-2: #141f2b;
+  --ls-color-border: rgba(53, 91, 115, 0.38);
+  --ls-color-border-strong: rgba(79, 209, 197, 0.55);
+
+  /* --- Text --- */
+  --ls-color-text: #eaf3fb;
+  --ls-color-text-dim: #c3d3e0;
+  --ls-color-text-muted: #9db3c4;
+
+  /* --- Semantic / faction colors (matches this game's own tile-kind
+     rgba hints and legend text: player=cyan, ally=teal-green,
+     enemy=red, info/other-ship=blue, anomaly=purple, warning=amber) --- */
+  --ls-color-player: #4fd1c5;
+  --ls-color-player-strong: #7cf5e8;
+  --ls-color-ally: #2f9079;
+  --ls-color-enemy: #e0525f;
+  --ls-color-info: #4aa8d8;
+  --ls-color-anomaly: #9b6fd8;
+  --ls-color-warning: #e0a94a;
+  --ls-color-success: #4fd17a;
+  --ls-color-success-bg: rgba(79, 209, 122, 0.14);
+  --ls-color-neutral: #7c8b96;
+
+  /* --- Typography --- */
+  --ls-font-ui: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --ls-font-mono: "SFMono-Regular", ui-monospace, Menlo, Consolas, monospace;
+  --ls-text-xl: 20px;
+  --ls-leading-tight: 1.15;
+
+  /* --- Radius --- */
+  --ls-radius-md: 8px;
+  --ls-radius-lg: 12px;
+  --ls-radius-xl: 18px;
+  --ls-radius-pill: 999px;
+
+  /* --- Motion --- */
+  --ls-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ls-ease-emphasis: cubic-bezier(0.2, 0.9, 0.3, 1.1);
+  --ls-motion-fast: 140ms;
+
+  /* --- Shadows / glow --- */
+  --ls-shadow-panel: 0 12px 32px rgba(0, 0, 0, 0.4);
+  --ls-shadow-float: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --ls-glow-player: 0 0 18px rgba(79, 209, 197, 0.35);
+
+  /* --- Spacing scale --- */
+  --ls-space-2: 8px;
+  --ls-space-3: 12px;
+  --ls-space-4: 16px;
+  --ls-space-5: 24px;
+
+  /* --- Safe-area insets (mobile notches/home-indicator), with a
+     zero fallback so this works identically on desktop --- */
+  --ls-safe-top: env(safe-area-inset-top, 0px);
+  --ls-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --ls-safe-left: env(safe-area-inset-left, 0px);
+  --ls-safe-right: env(safe-area-inset-right, 0px);
+}
+
+body {
+  background: var(--ls-color-bg-0);
+  color: var(--ls-color-text);
+  font-family: var(--ls-font-ui);
+}

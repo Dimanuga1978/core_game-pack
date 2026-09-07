@@ -1,0 +1,16 @@
+TableCore v2 B23 Performance Benchmark
+Workload: Sector Expedition, 5,000 END_TURN actions
+Runtime: Node.js in the audit container
+
+Five observed runs:
+1 legacy=778.804975 ms optimized=259.411589 ms speedup=3.002198x
+2 legacy=1133.483550 ms optimized=356.311417 ms speedup=3.181160x
+3 legacy=669.669675 ms optimized=238.054626 ms speedup=2.813092x
+4 legacy=1198.423274 ms optimized=478.029056 ms speedup=2.507009x
+5 legacy=822.516159 ms optimized=494.116132 ms speedup=1.664621x
+
+Median legacy: 822.516159 ms
+Median optimized: 356.311417 ms
+Median speedup: 2.813092x
+
+Interpretation: meaningful speedup observed, but benchmark is machine- and load-dependent and is not a universal performance guarantee.

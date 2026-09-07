@@ -1,0 +1,21 @@
+{
+  "name": "@tablecore/game-last-sector",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "@tablecore/content-sdk": "*",
+    "@tablecore/core": "*",
+    "@tablecore/game-pack": "*",
+    "immer": "^11.1.18"
+  },
+  "devDependencies": {
+    "@tablecore/protocol": "*",
+    "@tablecore/server": "*",
+    "@tablecore/transport-ws": "*"
+  }
+}

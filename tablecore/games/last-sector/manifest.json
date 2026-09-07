@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 2,
+  "gameId": "last-sector",
+  "name": "Last Sector",
+  "version": "1.0.0",
+  "status": "preview",
+  "engineCompatibility": ">=2.0.0-alpha.1 <3.0.0",
+  "entry": "src/index.js",
+  "minPlayers": 2,
+  "maxPlayers": 4,
+  "hiddenInformation": true,
+  "capabilities": ["player","tv","tutorial","reconnect","presentation","scenarios","visibility","knowledge","hex-map","rng"],
+  "content": "content/pack.json"
+}
